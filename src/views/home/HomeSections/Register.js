@@ -2,25 +2,25 @@ import React from "react";
 // reactstrap components
 import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
 
-export default function Download() {
+export default function Register() {
   return (
     <div
       className="section section-download"
       data-background-color="black"
-      id="download-section"
+      id="register-section"
     >
       <img alt="..." className="path" src={require("assets/img/path1.png")} />
       <Container>
         <Row className="justify-content-md-center">
           <Col className="text-center" lg="8" md="12">
             <h2 className="title">
-              Do you love this Bootstrap 4 React Design System?
+            About The Hackathon
             </h2>
             <h4 className="description">
-              Cause if you do, it can be yours for FREE. Hit the button below to
-              navigate to Creative Tim where you can find the design system in
-              React format. Start a new project or give an old Bootstrap project
-              a new look!
+            Kleos is a platform for all those talented students, developers, and engineers, to compete 
+            over 36 hours to find creative solutions to solve tough and real-world problems related to 
+            focusing on performance. The hackathon inspires developers to keep their focus aside from pure 
+            functionality and bring innovativeness to the concept.
             </h4>
           </Col>
           <Col className="text-center" lg="8" md="12">

@@ -52,9 +52,9 @@ export default function IndexNavbar() {
   const onCollapseExited = () => {
     setCollapseOut("");
   };
-  const scrollToDownload = () => {
+  const scrollToRegister = () => {
     document
-      .getElementById("download-section")
+      .getElementById("register-section")
       .scrollIntoView({ behavior: "smooth" });
   };
   return (
@@ -175,7 +175,7 @@ export default function IndexNavbar() {
               <Button
                 className="nav-link d-none d-lg-block"
                 color="primary"
-                tag={Link} to="/register-page"
+                onClick={scrollToRegister}
               >
                 <i className="tim-icons icon-spaceship" /> Register
               </Button>
@@ -184,7 +184,8 @@ export default function IndexNavbar() {
               <Button
                 className="nav-link d-none d-lg-block"
                 color="default"
-                onClick={scrollToDownload}
+                tag={Link} to="https://rait.acm.org/"
+                target="_blank"
               >
                 RAIT ACM
               </Button>

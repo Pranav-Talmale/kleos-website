@@ -42,17 +42,17 @@ export default function Footer() {
           <Col md="3">
             <Nav>
               <NavItem>
-                <NavLink href="https://creative-tim.com/contact-us?ref=blkdsr-footer">
+                <NavLink href="https://rait.acm.org/#contact" target="_blank">
                   Contact Us
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://creative-tim.com/about-us?ref=blkdsr-footer">
+                <NavLink href="https://rait.acm.org/#about" target="_blank">
                   About Us
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://creative-tim.com/blog?ref=blkdsr-footer">
+                <NavLink href="https://rait.acm.org/blogs.php" target="_blank">
                   Blog
                 </NavLink>
               </NavItem>
@@ -64,7 +64,7 @@ export default function Footer() {
               <Button
                 className="btn-icon btn-neutral btn-round btn-simple"
                 color="default"
-                href="https://twitter.com/creativetim"
+                href="https://twitter.com/RaitACM"
                 id="tooltip622135962"
                 target="_blank"
               >
@@ -76,7 +76,7 @@ export default function Footer() {
               <Button
                 className="btn-icon btn-neutral btn-round btn-simple"
                 color="default"
-                href="https://www.facebook.com/creativetim"
+                href="https://www.linkedin.com/in/rait-acm-student-chapter-034026197/"
                 id="tooltip230450801"
                 target="_blank"
               >
@@ -88,7 +88,7 @@ export default function Footer() {
               <Button
                 className="btn-icon btn-neutral btn-round btn-simple"
                 color="default"
-                href="https://dribbble.com/creativetim"
+                href="https://www.instagram.com/rait_acm"
                 id="tooltip318450378"
                 target="_blank"
               >

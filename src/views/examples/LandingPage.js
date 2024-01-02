@@ -295,7 +295,7 @@ export default function LandingPage() {
                   <Col lg="3">
                     <div className="info">
                       <div className="icon icon-warning">
-                        <i className="tim-icons icon-chart-pie-36" />
+                        <i className="tim-icons icon-cloud-download-93" />
                       </div>
                       <h4 className="info-title">High Incomes</h4>
                       <hr className="line-warning" />

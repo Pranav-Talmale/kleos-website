@@ -84,7 +84,7 @@ export default function RegisterPage() {
                         alt="..."
                         src={require("assets/img/square-purple-1.png")}
                       />
-                      <CardTitle tag="h4">Register</CardTitle>
+                      <CardTitle tag="h4">register</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Form className="form">
@@ -139,7 +139,7 @@ export default function RegisterPage() {
                             onBlur={(e) => setPasswordFocus(false)}
                           />
                         </InputGroup>
-                        <FormGroup check className="text-left">
+                        {/*<FormGroup check className="text-left">
                           <Label check>
                             <Input type="checkbox" />
                             <span className="form-check-sign" />I agree to the{" "}
@@ -148,6 +148,18 @@ export default function RegisterPage() {
                               onClick={(e) => e.preventDefault()}
                             >
                               terms and conditions
+                            </a>
+                            .
+                          </Label>
+                        </FormGroup>*/}
+                        <FormGroup className="text-left">
+                          <Label>
+                            <span className="form-check-sign" />Already have an account ?{" "}
+                            <a
+                              href="/signin-page"
+                              //onClick={(e) => e.preventDefault()}
+                            >
+                              Sign In
                             </a>
                             .
                           </Label>

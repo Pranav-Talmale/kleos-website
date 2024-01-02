@@ -6,19 +6,18 @@ import PageHeader from "components/PageHeader/PageHeader.js";
 import Footer from "components/Footer/Footer.js";
 
 // sections for this page/view
-import Basics from "views/IndexSections/Basics.js";
-import Navbars from "views/IndexSections/Navbars.js";
-import Tabs from "views/IndexSections/Tabs.js";
-import Pagination from "views/IndexSections/Pagination.js";
-import Notifications from "views/IndexSections/Notifications.js";
-import Typography from "views/IndexSections/Typography.js";
-import JavaScript from "views/IndexSections/JavaScript.js";
-import NucleoIcons from "views/IndexSections/NucleoIcons.js";
-import Signup from "views/IndexSections/Signup.js";
-import Examples from "views/IndexSections/Examples.js";
-import Download from "views/IndexSections/Download.js";
+import Basics from "views/home/HomeSections/Basics.js";
+import Navbars from "views/home/HomeSections/Navbars.js";
+import Tabs from "views/home/HomeSections/Tabs.js";
+import Pagination from "views/home/HomeSections/Pagination.js";
+import Notifications from "views/home/HomeSections/Notifications.js";
+import Typography from "views/home/HomeSections/Typography.js";
+import JavaScript from "views/home/HomeSections/JavaScript.js";
+import NucleoIcons from "views/home/HomeSections/NucleoIcons.js";
+import Examples from "views/home/HomeSections/Examples.js";
+import Register from "views/home/HomeSections/Register.js";
 
-export default function Index() {
+export default function Home() {
   React.useEffect(() => {
     document.body.classList.toggle("index-page");
     // Specify how to clean up after this effect:
@@ -32,17 +31,16 @@ export default function Index() {
       <div className="wrapper">
         <PageHeader />
         <div className="main">
-          <Basics />
+          {/*<Basics />
           <Navbars />
           <Tabs />
           <Pagination />
           <Notifications />
           <Typography />
           <JavaScript />
-          {/*<NucleoIcons />
-          <Signup />
-          <Examples />*/}
-          <Download />
+          <NucleoIcons />
+          <Examples /> */}
+          <Register />
         </div>
         <Footer />
       </div>
