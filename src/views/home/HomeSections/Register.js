@@ -26,11 +26,11 @@ export default function Register() {
           <Col className="text-center" lg="8" md="12">
             <Button
               color="primary"
-              href="/register-page"
+              href="#pablo"
               role="button"
               size="lg"
             >
-              <i className="tim-icons icon-spaceship" /> Register
+              <i className="tim-icons icon-spaceship" /> Registration starts from 1st April
             </Button>
           </Col>
         </Row>

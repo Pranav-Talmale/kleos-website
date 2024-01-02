@@ -15,6 +15,7 @@ import Typography from "views/home/HomeSections/Typography.js";
 import JavaScript from "views/home/HomeSections/JavaScript.js";
 import NucleoIcons from "views/home/HomeSections/NucleoIcons.js";
 import Examples from "views/home/HomeSections/Examples.js";
+import Domains from "views/home/HomeSections/Domains.js";
 import Register from "views/home/HomeSections/Register.js";
 
 export default function Home() {
@@ -39,7 +40,8 @@ export default function Home() {
           <Typography />
           <JavaScript />
           <NucleoIcons />
-          <Examples /> */}
+          <Examples />*/}
+          <Domains />
           <Register />
         </div>
         <Footer />
