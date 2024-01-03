@@ -5,18 +5,18 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import PageHeader from "components/PageHeader/PageHeader.js";
 import Footer from "components/Footer/Footer.js";
 
-// sections for this page/view
-import Basics from "views/home/HomeSections/Basics.js";
-import Navbars from "views/home/HomeSections/Navbars.js";
-import Tabs from "views/home/HomeSections/Tabs.js";
-import Pagination from "views/home/HomeSections/Pagination.js";
-import Notifications from "views/home/HomeSections/Notifications.js";
-import Typography from "views/home/HomeSections/Typography.js";
+// sections for this page/viewimport Basics from "views/home/HomeSections/Basics.js";
+//import Navbars from "views/home/HomeSections/Navbars.js";
+//import Tabs from "views/home/HomeSections/Tabs.js";
+//import Pagination from "views/home/HomeSections/Pagination.js";
+//import Typography from "views/home/HomeSections/Typography.js";
 import JavaScript from "views/home/HomeSections/JavaScript.js";
-import NucleoIcons from "views/home/HomeSections/NucleoIcons.js";
-import Examples from "views/home/HomeSections/Examples.js";
+//import NucleoIcons from "views/home/HomeSections/NucleoIcons.js";
+//import Examples from "views/home/HomeSections/Examples.js";
+import FAQ from "views/home/HomeSections/FAQs.js";
 import Domains from "views/home/HomeSections/Domains.js";
 import Register from "views/home/HomeSections/Register.js";
+import Timeline from "./HomeSections/Timeline.js";
 
 export default function Home() {
   React.useEffect(() => {
@@ -36,12 +36,13 @@ export default function Home() {
           <Navbars />
           <Tabs />
           <Pagination />
-          <Notifications />
           <Typography />
-          <JavaScript />
           <NucleoIcons />
-          <Examples />*/}
+          <Examples />
+          <JavaScript />*/}
           <Domains />
+          <Timeline />
+          <FAQ />
           <Register />
         </div>
         <Footer />
