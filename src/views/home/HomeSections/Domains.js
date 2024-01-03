@@ -10,7 +10,7 @@ export default function Domains() {
             <Container>
                 <Row className="justify-content-center">
                 <Col lg="12">
-                    <h1 className="text-center">Hackathon Domains</h1>
+                    <h1 className="title">Hackathon Domains</h1>
                     <Row className="row-grid justify-content-center">
                     <Col lg="3">
                         <div className="info">
