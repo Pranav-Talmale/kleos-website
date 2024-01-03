@@ -17,6 +17,7 @@ import FAQ from "views/home/HomeSections/FAQs.js";
 import Domains from "views/home/HomeSections/Domains.js";
 import Register from "views/home/HomeSections/Register.js";
 import Timeline from "./HomeSections/Timeline.js";
+import About from "./HomeSections/About.js";
 
 export default function Home() {
   React.useEffect(() => {
@@ -40,6 +41,7 @@ export default function Home() {
           <NucleoIcons />
           <Examples />
           <JavaScript />*/}
+          <About />
           <Domains />
           <Timeline />
           <FAQ />
