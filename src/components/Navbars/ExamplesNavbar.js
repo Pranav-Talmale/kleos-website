@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useLogoutMutation } from 'slices/usersApiSlice.js';
+import { logout } from 'slices/authSlice.js';
 // reactstrap components
 import {
   Collapse,
@@ -46,6 +50,23 @@ export default function ExamplesNavbar() {
   };
   const onCollapseExited = () => {
     setCollapseOut("");
+  };
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/home', { replace: true });
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
@@ -99,6 +120,15 @@ export default function ExamplesNavbar() {
                 Back to Home
               </NavLink>
             </NavItem>
+            {userInfo ? (
+                <>
+            <NavItem>
+              <NavLink tag={Link} onClick={logoutHandler}>
+              Logout
+              </NavLink>
+            </NavItem>
+                </>
+                ): null}  
             <NavItem>
               <NavLink tag={Link} to="/home#FAQs">
                 FAQs
