@@ -7,9 +7,8 @@ import "assets/scss/blk-design-system-react.scss";
 import "assets/demo/demo.css";
 
 import Home from "views/home/Home.js";
-import LandingPage from "views/examples/LandingPage.js";
 import RegisterPage from "views/register/RegisterPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
+import ProfilePage from "views/other/ProfilePage.js";
 import SignInPage from "views/register/SignInPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,7 +17,6 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/home" element={<Home />} />
-      <Route path="/landing-page" element={<LandingPage />} />
       <Route path="/register-page" element={<RegisterPage />} />
       <Route path="/signin-page" element={<SignInPage />} />
       <Route path="/profile-page" element={<ProfilePage />} />

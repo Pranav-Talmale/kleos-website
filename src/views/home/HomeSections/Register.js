@@ -1,6 +1,6 @@
 import React from "react";
 // reactstrap components
-import { Button, Container, Row, Col } from "reactstrap";
+import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
 
 export default function Register() {
   return (
@@ -44,7 +44,7 @@ export default function Register() {
           <Col className="text-center" lg="8" md="12">
             <Button
               color="primary"
-              href="#pablo"
+              href="/register-page"
               role="button"
               size="lg"
             >
@@ -57,53 +57,27 @@ export default function Register() {
         <br />
         <br />
         <br />
-        {/*<Row className="row-grid align-items-center my-md">
+        <Row className="row-grid align-items-center my-md">
           <Col lg="6">
             <h3 className="text-info font-weight-light mb-2">
-              Thank you for supporting us!
+              Download the PPT Template for KLEOS.
             </h3>
-            <h4 className="mb-0 font-weight-light">
-              Let's get in touch on any of these platforms.
-            </h4>
           </Col>
           <Col className="text-lg-center btn-wrapper" lg="6">
             <Button
               className="btn-icon btn-round"
               color="twitter"
-              id="twitter"
+              id="download-template"
               size="lg"
+              href="https://docs.google.com/presentation/d/1mK-qhy8gXfUHjqd6MDg8kcnL0E-L30uv/edit?usp=sharing&ouid=105478635307635313115&rtpof=true&sd=true"
             >
-              <i className="fab fa-twitter" />
+              <i className="tim-icons icon-cloud-download-93" />
             </Button>
-            <UncontrolledTooltip delay={0} target="twitter">
-              Tweet!
-            </UncontrolledTooltip>
-            <Button
-              className="btn-icon btn-round"
-              color="facebook"
-              id="facebook"
-              size="lg"
-            >
-              <i className="fab fa-facebook-square" />
-            </Button>
-            <UncontrolledTooltip delay={0} target="facebook">
-              Share!
-            </UncontrolledTooltip>
-            <Button
-              className="btn-icon btn-round"
-              color="github"
-              href="https://github.com/creativetimofficial"
-              id="tooltip877922017"
-              size="lg"
-              target="_blank"
-            >
-              <i className="fab fa-github" />
-            </Button>
-            <UncontrolledTooltip delay={0} target="tooltip877922017">
-              Star on Github
+            <UncontrolledTooltip delay={0} target="download-template">
+              Download!
             </UncontrolledTooltip>
           </Col>
-        </Row>*/}
+        </Row>
       </Container>
     </div>
   );
