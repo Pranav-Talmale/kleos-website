@@ -10,7 +10,7 @@ import Footer from "components/Footer/Footer.js";
 //import Tabs from "views/home/HomeSections/Tabs.js";
 //import Pagination from "views/home/HomeSections/Pagination.js";
 //import Typography from "views/home/HomeSections/Typography.js";
-import JavaScript from "views/home/HomeSections/JavaScript.js";
+//import JavaScript from "views/home/HomeSections/JavaScript.js";
 //import NucleoIcons from "views/home/HomeSections/NucleoIcons.js";
 //import Examples from "views/home/HomeSections/Examples.js";
 import FAQ from "views/home/HomeSections/FAQs.js";
