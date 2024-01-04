@@ -116,7 +116,7 @@ export default function IndexNavbar() {
                 Menu
               </DropdownToggle>
               <DropdownMenu className="dropdown-with-icons">
-                <DropdownItem tag={Link} to="/register-page">
+                <DropdownItem onClick={scrollToRegister}>
                   <i className="tim-icons icon-bullet-list-67" />
                   Register Page
                 </DropdownItem>

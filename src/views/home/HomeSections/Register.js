@@ -45,11 +45,11 @@ export default function Register() {
           <Col className="text-center" lg="8" md="12">
             <Button
               color="primary"
-              tag={Link} to="/register-page"
+              tag={Link} to="/register"
               role="button"
               size="lg"
             >
-              <i className="tim-icons icon-spaceship" /> Registration starts from 20th Feb
+              <i className="tim-icons icon-spaceship" /> Register
             </Button>
           </Col>
         </Row>

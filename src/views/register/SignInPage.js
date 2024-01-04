@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -123,14 +124,8 @@ export default function SignInPage() {
                         </InputGroup>
                         <FormGroup className="text-left">
                           <Label>
-                            <span className="form-check-sign" />Don't have an account?{" "}
-                            <a
-                              href="/register-page"
-                              //onClick={(e) => e.preventDefault()}
-                            >
-                              Register
-                            </a>
-                            .
+                          <span className="form-check-sign" />Don't have an account?{' '}
+                          <Link to="/register">Register.</Link>.
                           </Label>
                         </FormGroup>
                       </Form>
