@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // reactstrap components
 import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
 
@@ -44,7 +45,7 @@ export default function Register() {
           <Col className="text-center" lg="8" md="12">
             <Button
               color="primary"
-              href="/register-page"
+              tag={Link} to="/register-page"
               role="button"
               size="lg"
             >
