@@ -88,7 +88,7 @@ export default function IndexNavbar() {
             <Row>
               <Col className="collapse-brand" xs="6">
                 <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  BLK•React
+                KLEOS
                 </a>
               </Col>
               <Col className="collapse-close text-right" xs="6">
@@ -116,7 +116,7 @@ export default function IndexNavbar() {
                 Menu
               </DropdownToggle>
               <DropdownMenu className="dropdown-with-icons">
-                <DropdownItem onClick={scrollToRegister}>
+                <DropdownItem tag={Link} to="/register">
                   <i className="tim-icons icon-bullet-list-67" />
                   Register Page
                 </DropdownItem>
