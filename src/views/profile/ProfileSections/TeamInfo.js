@@ -1,7 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-// javascript plugin used to create scrollbars on windows
-import PerfectScrollbar from "perfect-scrollbar";
 import { useSelector } from 'react-redux';
 // reactstrap components
 import {
@@ -9,6 +7,10 @@ import {
   Card,
   CardHeader,
   CardBody,
+  Label,
+  FormGroup,
+  Input,
+  FormText,
   NavItem,
   NavLink,
   Nav,
@@ -18,66 +20,15 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledCarousel,
 } from "reactstrap";
-
-// core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import Footer from "components/Footer/Footer.js";
-
-const carouselItems = [
-  {
-    src: require("assets/img/denys.jpg"),
-    altText: "Slide 1",
-    caption: "Big City Life, United States",
-  },
-  {
-    src: require("assets/img/fabien-bazanegue.jpg"),
-    altText: "Slide 2",
-    caption: "Somewhere Beyond, United States",
-  },
-  {
-    src: require("assets/img/mark-finn.jpg"),
-    altText: "Slide 3",
-    caption: "Stocks, United States",
-  },
-];
-
-let ps = null;
-
-export default function ProfilePage() {
-  const [tabs, setTabs] = React.useState(1);
-  React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      document.documentElement.className += " perfect-scrollbar-on";
-      document.documentElement.classList.remove("perfect-scrollbar-off");
-      let tables = document.querySelectorAll(".table-responsive");
-      for (let i = 0; i < tables.length; i++) {
-        ps = new PerfectScrollbar(tables[i]);
-      }
-    }
-    document.body.classList.toggle("profile-page");
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
-        document.documentElement.className += " perfect-scrollbar-off";
-        document.documentElement.classList.remove("perfect-scrollbar-on");
-      }
-      document.body.classList.toggle("profile-page");
-    };
-  }, []);
-  const { userInfo } = useSelector((state) => state.auth);
-  return (
-    <>
-      <ExamplesNavbar />
+  
+  export default function TeamInfo() {
+    const [tabs, setTabs] = React.useState(1);
+    const { userInfo } = useSelector((state) => state.auth);
+    return (
+      <>
       <div className="wrapper">
         <div className="page-header">
-          <img
-            alt="..."
-            className="dots"
-            src={require("assets/img/dots.png")}
-          />
           <img
             alt="..."
             className="path"
@@ -169,7 +120,7 @@ export default function ProfilePage() {
                           Members
                         </NavLink>
                       </NavItem>
-                      {/*<NavItem>
+                      <NavItem>
                         <NavLink
                           className={classnames({
                             active: tabs === 2,
@@ -180,9 +131,9 @@ export default function ProfilePage() {
                           }}
                           href="#pablo"
                         >
-                          Send
+                          Add Members
                         </NavLink>
-                        </NavItem>*/}
+                        </NavItem>
                       <NavItem>
                         <NavLink
                           className={classnames({
@@ -213,7 +164,16 @@ export default function ProfilePage() {
                           <tbody>
                             <tr>
                               <td>1</td>
-                              <td>{userInfo.name}</td>
+                              <td>
+                              {userInfo ? (
+                                <>
+                                  {userInfo.name}
+                                </>):(
+                                <>
+                                  Mike Scheinder
+                                </>)
+                              }
+                                </td>
                             </tr>
                             <tr>
                               <td>2</td>
@@ -230,23 +190,20 @@ export default function ProfilePage() {
                           </tbody>
                         </Table>
                       </TabPane>
-                      {/*<TabPane tabId="tab2">
+                      <TabPane tabId="tab2">
                         <Row>
-                          <Label sm="3">Pay to</Label>
+                          <Label sm="3">Name</Label>
                           <Col sm="9">
                             <FormGroup>
                               <Input
                                 placeholder="e.g. 1Nasd92348hU984353hfid"
                                 type="text"
                               />
-                              <FormText color="default" tag="span">
-                                Please enter a valid address.
-                              </FormText>
                             </FormGroup>
                           </Col>
                         </Row>
                         <Row>
-                          <Label sm="3">Amount</Label>
+                          <Label sm="3">Email</Label>
                           <Col sm="9">
                             <FormGroup>
                               <Input placeholder="1.587" type="text" />
@@ -258,9 +215,12 @@ export default function ProfilePage() {
                           color="primary"
                           type="submit"
                         >
-                          <i className="tim-icons icon-send" />
+                          <i className="tim-icons icon-simple-add" />
                         </Button>
-                        </TabPane>*/}
+                        <FormText color="default" tag="span">
+                          Team can only have 4 members including you.
+                        </FormText>
+                        </TabPane>
                       <TabPane tabId="tab3">
                       <Table className="tablesorter" responsive>
                           <thead className="text-primary">
@@ -272,7 +232,16 @@ export default function ProfilePage() {
                           <tbody>
                             <tr>
                               <td>1</td>
-                              <td>{userInfo.email}</td>
+                              <td>
+                              {userInfo ? (
+                                <>
+                                  {userInfo.email}
+                                </>):(
+                                <>
+                                  example@email.com
+                                </>)
+                              }
+                                </td>
                             </tr>
                             <tr>
                               <td>2</td>
@@ -296,144 +265,6 @@ export default function ProfilePage() {
             </Row>
           </Container>
         </div>
-        <div className="section">
-          <Container>
-            <Row className="justify-content-between">
-              <Col md="6">
-                <Row className="justify-content-between align-items-center">
-                  <UncontrolledCarousel items={carouselItems} />
-                </Row>
-              </Col>
-              <Col md="5">
-                <h1 className="profile-title text-left">Hackathon PPT Template</h1>
-                <h5 className="text-on-back">02</h5>
-                <p className="profile-description text-left">
-                The presentation template provided by RAIT ACM has to be followed strictly followed by all the teams. 
-                Failing to do so will result in disqualification. Submissions should be made on time. Late submissions will 
-                not be taken into account. No plagiarism or reusing of past work will be allowed. If you decide to submit projects 
-                consisting of re-used code, or re-submit a project that you have already submitted previously to any other hackathon, 
-                you are to disclose such previous use and its extent with the submission. If not , their submissions will be dismissed.
-                </p>
-                <div className="btn-wrapper pt-3">
-                  <Button
-                    className="btn-simple"
-                    color="primary"
-                    href="https://docs.google.com/presentation/d/1mK-qhy8gXfUHjqd6MDg8kcnL0E-L30uv/edit?usp=sharing&ouid=105478635307635313115&rtpof=true&sd=true"
-                  >
-                    <i className="tim-icons icon-book-bookmark" /> Download Template
-                  </Button>
-                  {/*<Button
-                    className="btn-simple"
-                    color="info"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <i className="tim-icons icon-bulb-63" /> Check it!
-                  </Button>*/}
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        {/*<section className="section">
-          <Container>
-            <Row>
-              <Col md="6">
-                <Card className="card-plain">
-                  <CardHeader>
-                    <h1 className="profile-title text-left">Contact</h1>
-                    <h5 className="text-on-back">03</h5>
-                  </CardHeader>
-                  <CardBody>
-                    <Form>
-                      <Row>
-                        <Col md="6">
-                          <FormGroup>
-                            <label>Your Name</label>
-                            <Input defaultValue="Mike" type="text" />
-                          </FormGroup>
-                        </Col>
-                        <Col md="6">
-                          <FormGroup>
-                            <label>Email address</label>
-                            <Input placeholder="mike@email.com" type="email" />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md="6">
-                          <FormGroup>
-                            <label>Phone</label>
-                            <Input defaultValue="001-12321345" type="text" />
-                          </FormGroup>
-                        </Col>
-                        <Col md="6">
-                          <FormGroup>
-                            <label>Company</label>
-                            <Input defaultValue="CreativeTim" type="text" />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md="12">
-                          <FormGroup>
-                            <label>Message</label>
-                            <Input placeholder="Hello there!" type="text" />
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Button
-                        className="btn-round float-right"
-                        color="primary"
-                        data-placement="right"
-                        id="tooltip341148792"
-                        type="button"
-                      >
-                        Send text
-                      </Button>
-                      <UncontrolledTooltip
-                        delay={0}
-                        placement="right"
-                        target="tooltip341148792"
-                      >
-                        Can't wait for your message
-                      </UncontrolledTooltip>
-                    </Form>
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col className="ml-auto" md="4">
-                <div className="info info-horizontal">
-                  <div className="icon icon-primary">
-                    <i className="tim-icons icon-square-pin" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Find us at the office</h4>
-                    <p>
-                      Bld Mihail Kogalniceanu, nr. 8, <br />
-                      7652 Bucharest, <br />
-                      Romania
-                    </p>
-                  </div>
-                </div>
-                <div className="info info-horizontal">
-                  <div className="icon icon-primary">
-                    <i className="tim-icons icon-mobile" />
-                  </div>
-                  <div className="description">
-                    <h4 className="info-title">Give us a ring</h4>
-                    <p>
-                      Michael Jordan <br />
-                      +40 762 321 762 <br />
-                      Mon - Fri, 8:00-22:00
-                    </p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section>*/}
-        <Footer />
       </div>
     </>
   );

@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Home from "views/home/Home.js";
 import RegisterPage from "views/register/RegisterPage.js";
-import ProfilePage from "views/other/ProfilePage.js";
+import ProfilePage from "views/profile/ProfilePage.js";
 import SignInPage from "views/register/SignInPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
