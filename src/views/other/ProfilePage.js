@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
+import { useSelector } from 'react-redux';
 // reactstrap components
 import {
   Button,
@@ -72,6 +73,7 @@ export default function ProfilePage() {
       document.body.classList.toggle("profile-page");
     };
   }, []);
+  const { userInfo } = useSelector((state) => state.auth);
   return (
     <>
       <ExamplesNavbar />
@@ -90,7 +92,14 @@ export default function ProfilePage() {
           <Container className="align-items-center">
             <Row>
               <Col lg="6" md="6">
-                <h1 className="profile-title text-left">Mike Scheinder</h1>
+                {userInfo ? (
+                  <>
+                    <h1 className="profile-title text-left">{userInfo.name}</h1>
+                  </>):(
+                  <>
+                    <h1 className="profile-title text-left">Mike Scheinder</h1>
+                  </>)
+                }
                 <h5 className="text-on-back">01</h5>
                 <p className="profile-description">
                   Offices parties lasting outward nothing age few resolve.
@@ -98,7 +107,7 @@ export default function ProfilePage() {
                   excellence. Him remarkably use projection collecting. Going
                   about eat forty world has round miles.
                 </p>
-                <div className="btn-wrapper profile pt-3">
+                {/*<div className="btn-wrapper profile pt-3">
                   <Button
                     className="btn-icon btn-round"
                     color="twitter"
@@ -135,7 +144,7 @@ export default function ProfilePage() {
                   <UncontrolledTooltip delay={0} target="tooltip951161185">
                     Follow us
                   </UncontrolledTooltip>
-                </div>
+              </div>*/}
               </Col>
               <Col className="ml-auto mr-auto" lg="4" md="6">
                 <Card className="card-coin card-plain">
@@ -143,9 +152,9 @@ export default function ProfilePage() {
                     <img
                       alt="..."
                       className="img-center img-fluid rounded-circle"
-                      src={require("assets/img/mike.jpg")}
+                      src={require("assets/img/kleos-logo-full.png")}
                     />
-                    <h4 className="title">Transactions</h4>
+                    <h4 className="title">Team Information</h4>
                   </CardHeader>
                   <CardBody>
                     <Nav
@@ -163,10 +172,10 @@ export default function ProfilePage() {
                           }}
                           href="#pablo"
                         >
-                          Wallet
+                          Members
                         </NavLink>
                       </NavItem>
-                      <NavItem>
+                      {/*<NavItem>
                         <NavLink
                           className={classnames({
                             active: tabs === 2,
@@ -179,7 +188,7 @@ export default function ProfilePage() {
                         >
                           Send
                         </NavLink>
-                      </NavItem>
+                        </NavItem>*/}
                       <NavItem>
                         <NavLink
                           className={classnames({
@@ -191,7 +200,7 @@ export default function ProfilePage() {
                           }}
                           href="#pablo"
                         >
-                          News
+                          Emails
                         </NavLink>
                       </NavItem>
                     </Nav>
@@ -203,31 +212,31 @@ export default function ProfilePage() {
                         <Table className="tablesorter" responsive>
                           <thead className="text-primary">
                             <tr>
-                              <th className="header">COIN</th>
-                              <th className="header">AMOUNT</th>
-                              <th className="header">VALUE</th>
+                              <th className="header">Sr. No</th>
+                              <th className="header">Name</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>BTC</td>
-                              <td>7.342</td>
-                              <td>48,870.75 USD</td>
+                              <td>1</td>
+                              <td>{userInfo.name}</td>
                             </tr>
                             <tr>
-                              <td>ETH</td>
-                              <td>30.737</td>
-                              <td>64,53.30 USD</td>
+                              <td>2</td>
+                              <td>Pranav Talmale</td>
                             </tr>
                             <tr>
-                              <td>XRP</td>
-                              <td>19.242</td>
-                              <td>18,354.96 USD</td>
+                              <td>3</td>
+                              <td>Shreyash Pingale</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Aryan Butala</td>
                             </tr>
                           </tbody>
                         </Table>
                       </TabPane>
-                      <TabPane tabId="tab2">
+                      {/*<TabPane tabId="tab2">
                         <Row>
                           <Label sm="3">Pay to</Label>
                           <Col sm="9">
@@ -257,23 +266,31 @@ export default function ProfilePage() {
                         >
                           <i className="tim-icons icon-send" />
                         </Button>
-                      </TabPane>
+                        </TabPane>*/}
                       <TabPane tabId="tab3">
-                        <Table className="tablesorter" responsive>
+                      <Table className="tablesorter" responsive>
                           <thead className="text-primary">
                             <tr>
-                              <th className="header">Latest Crypto News</th>
+                              <th className="header">Sr. No</th>
+                              <th className="header">Name</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>The Daily: Nexo to Pay on Stable...</td>
+                              <td>1</td>
+                              <td>{userInfo.email}</td>
                             </tr>
                             <tr>
-                              <td>Venezuela Begins Public of Nation...</td>
+                              <td>2</td>
+                              <td>abc@email.com</td>
                             </tr>
                             <tr>
-                              <td>PR: BitCanna – Dutch Blockchain...</td>
+                              <td>3</td>
+                              <td>xyz@email.com</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>pqr@email.com</td>
                             </tr>
                           </tbody>
                         </Table>
@@ -294,38 +311,37 @@ export default function ProfilePage() {
                 </Row>
               </Col>
               <Col md="5">
-                <h1 className="profile-title text-left">Projects</h1>
+                <h1 className="profile-title text-left">Hackathon PPT Template</h1>
                 <h5 className="text-on-back">02</h5>
                 <p className="profile-description text-left">
-                  An artist of considerable range, Ryan — the name taken by
-                  Melbourne-raised, Brooklyn-based Nick Murphy — writes,
-                  performs and records all of his own music, giving it a warm,
-                  intimate feel with a solid groove structure. An artist of
-                  considerable range.
+                The presentation template provided by RAIT ACM has to be followed strictly followed by all the teams. 
+                Failing to do so will result in disqualification. Submissions should be made on time. Late submissions will 
+                not be taken into account. No plagiarism or reusing of past work will be allowed. If you decide to submit projects 
+                consisting of re-used code, or re-submit a project that you have already submitted previously to any other hackathon, 
+                you are to disclose such previous use and its extent with the submission. If not , their submissions will be dismissed.
                 </p>
                 <div className="btn-wrapper pt-3">
                   <Button
                     className="btn-simple"
                     color="primary"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    href="https://docs.google.com/presentation/d/1mK-qhy8gXfUHjqd6MDg8kcnL0E-L30uv/edit?usp=sharing&ouid=105478635307635313115&rtpof=true&sd=true"
                   >
-                    <i className="tim-icons icon-book-bookmark" /> Bookmark
+                    <i className="tim-icons icon-book-bookmark" /> Download Template
                   </Button>
-                  <Button
+                  {/*<Button
                     className="btn-simple"
                     color="info"
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}
                   >
                     <i className="tim-icons icon-bulb-63" /> Check it!
-                  </Button>
+                  </Button>*/}
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
-        <section className="section">
+        {/*<section className="section">
           <Container>
             <Row>
               <Col md="6">
@@ -422,7 +438,7 @@ export default function ProfilePage() {
               </Col>
             </Row>
           </Container>
-        </section>
+        </section>*/}
         <Footer />
       </div>
     </>
