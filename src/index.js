@@ -30,10 +30,10 @@ root.render(
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/signin" element={<SignInPage />} />
-        <Route path='' element={<PrivateRoute />}>
+        <Route path="*" element={<Navigate to="/home" replace />} />
+        <Route element={<PrivateRoute />}>
           <Route path="/profile-page" element={<ProfilePage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </BrowserRouter>
   </Provider>
