@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 // reactstrap components
 import {
   Button,
@@ -56,6 +57,7 @@ export default function IndexNavbar() {
       .getElementById("register-section")
       .scrollIntoView({ behavior: "smooth" });
   };
+  const { userInfo } = useSelector((state) => state.auth);
   return (
     <Navbar className={"fixed-top " + color} color-on-scroll="100" expand="lg">
       <Container>
@@ -132,7 +134,14 @@ export default function IndexNavbar() {
                 color="primary"
                 onClick={scrollToRegister}
               >
-                <i className="tim-icons icon-spaceship" /> Register
+                {userInfo ? (
+                  <>
+                    <i className="tim-icons icon-badge" /> Go To Profile
+                  </>):(
+                  <>
+                    <i className="tim-icons icon-spaceship" /> Register
+                  </>)
+                }
               </Button>
             </NavItem>
             <NavItem>

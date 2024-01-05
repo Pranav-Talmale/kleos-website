@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 // reactstrap components
-import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 
 export default function Register() {
+  const { userInfo } = useSelector((state) => state.auth);
   return (
     <div
       className="section section-download"
@@ -49,34 +51,15 @@ export default function Register() {
               role="button"
               size="lg"
             >
-              <i className="tim-icons icon-spaceship" /> Register
+              {userInfo ? (
+                  <>
+                    <i className="tim-icons icon-badge" /> Go To Profile
+                  </>):(
+                  <>
+                    <i className="tim-icons icon-spaceship" /> Register
+                  </>)
+                }
             </Button>
-          </Col>
-        </Row>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Row className="row-grid align-items-center my-md">
-          <Col lg="6">
-            <h3 className="text-info font-weight-light mb-2">
-              Download the PPT Template for KLEOS.
-            </h3>
-          </Col>
-          <Col className="text-lg-center btn-wrapper" lg="6">
-            <Button
-              className="btn-icon btn-round"
-              color="twitter"
-              id="download-template"
-              size="lg"
-              href="https://docs.google.com/presentation/d/1mK-qhy8gXfUHjqd6MDg8kcnL0E-L30uv/edit?usp=sharing&ouid=105478635307635313115&rtpof=true&sd=true"
-            >
-              <i className="tim-icons icon-cloud-download-93" />
-            </Button>
-            <UncontrolledTooltip delay={0} target="download-template">
-              Download!
-            </UncontrolledTooltip>
           </Col>
         </Row>
       </Container>
