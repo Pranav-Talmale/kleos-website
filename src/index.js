@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, Outlet } from "react-router-dom";
 import store from "store";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { ToastContainer } from 'react-toastify';
 
 import "assets/css/nucleo-icons.css";
@@ -17,6 +17,11 @@ import SignInPage from "views/register/SignInPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const PrivateRoute = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+  return userInfo ? <Outlet /> : <Navigate to='/home' replace />;
+};
+
 root.render(
   <Provider store={store}>
   <ToastContainer />
@@ -25,7 +30,9 @@ root.render(
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="/profile-page" element={<ProfilePage />} />
+        <Route path='' element={<PrivateRoute />}>
+          <Route path="/profile-page" element={<ProfilePage />} />
+        </Route>
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </BrowserRouter>
