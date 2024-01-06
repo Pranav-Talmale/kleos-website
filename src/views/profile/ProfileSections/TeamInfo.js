@@ -65,7 +65,7 @@ import {
               <Col lg="6" md="6">
                 {userInfo ? (
                   <>
-                    <h1 className="profile-title text-left">{userInfo.name}</h1>
+                    <h1 className="profile-title text-left">{userInfo.member1Name}</h1>
                   </>):(
                   <>
                     <h1 className="profile-title text-left">Mike Schnider</h1>
@@ -202,7 +202,7 @@ import {
                               <td>
                               {userInfo ? (
                                 <>
-                                  {userInfo.name}
+                                  {userInfo.member1Name}
                                 </>):(
                                 <>
                                   Mike Scheinder
@@ -294,7 +294,7 @@ import {
                               <td>
                               {userInfo ? (
                                 <>
-                                  {userInfo.email}
+                                  {userInfo.member1Email}
                                 </>):(
                                 <>
                                   example@email.com

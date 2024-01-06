@@ -37,7 +37,7 @@ export default function SignInPage() {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
-  const [email, setEmail] = useState('');
+  const [member1Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ export default function SignInPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await login({ email, password }).unwrap();
+      const res = await login({ member1Email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate('/');
     } catch (err) {

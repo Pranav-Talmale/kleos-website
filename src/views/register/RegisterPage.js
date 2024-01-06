@@ -35,10 +35,12 @@ export default function RegisterPage() {
   const [squares7and8, setSquares7and8] = useState("");
   const [fullNameFocus, setFullNameFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
+  const [numberFocus, setNumberFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [member1Name, setName] = useState('');
+  const [member1Email, setEmail] = useState('');
+  const [member1Number, setNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   useEffect(() => {
@@ -89,7 +91,7 @@ export default function RegisterPage() {
       toast.error('Passwords do not match');
     } else {
       try {
-        const res = await register({ name, email, password }).unwrap();
+        const res = await register({ member1Name, member1Email, member1Number, password }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate('/');
       } catch (err) {
@@ -162,6 +164,24 @@ export default function RegisterPage() {
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
                             onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </InputGroup>
+                        <InputGroup
+                          className={classnames({
+                            "input-group-focus": numberFocus,
+                          })}
+                        >
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="tim-icons icon-mobile" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Mobile Number"
+                            type="text"
+                            onFocus={(e) => setNumberFocus(true)}
+                            onBlur={(e) => setNumberFocus(false)}
+                            onChange={(e) => setNumber(e.target.value)}
                           />
                         </InputGroup>
                         <InputGroup
