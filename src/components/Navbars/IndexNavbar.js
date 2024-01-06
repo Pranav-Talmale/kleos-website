@@ -118,7 +118,7 @@ export default function IndexNavbar() {
                 Menu
               </DropdownToggle>
               <DropdownMenu className="dropdown-with-icons">
-                <DropdownItem tag={Link} to="/register">
+                <DropdownItem tag={Link} to="/register" disabled="true">
                   <i className="tim-icons icon-bullet-list-67" />
                   Register Page
                 </DropdownItem>

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
 
 export default function Register() {
-  const { userInfo } = useSelector((state) => state.auth);
+  //const { userInfo } = useSelector((state) => state.auth);
   return (
     <div
       className="section section-download"
@@ -50,15 +50,9 @@ export default function Register() {
               tag={Link} to="/register"
               role="button"
               size="lg"
+              disabled="true"
             >
-              {userInfo ? (
-                  <>
-                    <i className="tim-icons icon-badge" /> Go To Profile
-                  </>):(
-                  <>
-                    <i className="tim-icons icon-spaceship" /> Register
-                  </>)
-                }
+              <i className="tim-icons icon-spaceship" /> Registration Starts Soon
             </Button>
           </Col>
         </Row>
