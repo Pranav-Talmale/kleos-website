@@ -7,12 +7,15 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Label,
   FormGroup,
   Input,
-  FormText,
   NavItem,
   NavLink,
+  Modal,
+  Form,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
   Nav,
   Table,
   TabContent,
@@ -25,6 +28,29 @@ import {
   export default function TeamInfo() {
     const [tabs, setTabs] = React.useState(1);
     const { userInfo } = useSelector((state) => state.auth);
+
+    //Add Member 2 Form
+    const [formModal1, setFormModal1] = React.useState(false);
+    const [name2Focus, setName2Focus] = React.useState(false);
+    const [email2Focus, setEmail2Focus] = React.useState(false);
+    const [number2Focus, setNumber2Focus] = React.useState(false);
+
+    //Add Member 3 Form
+    const [formModal2, setFormModal2] = React.useState(false);
+    const [name3Focus, setName3Focus] = React.useState(false);
+    const [email3Focus, setEmail3Focus] = React.useState(false);
+    const [number3Focus, setNumber3Focus] = React.useState(false);
+
+    //Add Member 4 Form
+    const [formModal3, setFormModal3] = React.useState(false);
+    const [name4Focus, setName4Focus] = React.useState(false);
+    const [email4Focus, setEmail4Focus] = React.useState(false);
+    const [number4Focus, setNumber4Focus] = React.useState(false);
+
+    //Add Team Name
+    const [formModal4, setFormModal4] = React.useState(false);
+    const [teamNameFocus, setTeamNameFocus] = React.useState(false);
+    const [shortNameFocus, setShortNameFocus] = React.useState(false);
     return (
       <>
       <div className="wrapper">
@@ -42,7 +68,7 @@ import {
                     <h1 className="profile-title text-left">{userInfo.name}</h1>
                   </>):(
                   <>
-                    <h1 className="profile-title text-left">Mike Scheinder</h1>
+                    <h1 className="profile-title text-left">Mike Schnider</h1>
                   </>)
                 }
                 <h5 className="text-on-back">01</h5>
@@ -52,6 +78,15 @@ import {
                   excellence. Him remarkably use projection collecting. Going
                   about eat forty world has round miles.
                 </p>
+                <div className="btn-wrapper pt-3">
+                  <Button
+                    className="btn-simple"
+                    color="primary"
+                    onClick={() => setFormModal4(true)}
+                  >
+                    <i className="tim-icons icon-book-bookmark" /> Set Team Name
+                  </Button>
+                </div>
                 {/*<div className="btn-wrapper profile pt-3">
                   <Button
                     className="btn-icon btn-round"
@@ -120,7 +155,7 @@ import {
                           Members
                         </NavLink>
                       </NavItem>
-                      <NavItem>
+                      {/*<NavItem>
                         <NavLink
                           className={classnames({
                             active: tabs === 2,
@@ -133,7 +168,7 @@ import {
                         >
                           Add Members
                         </NavLink>
-                        </NavItem>
+                        </NavItem>*/}
                       <NavItem>
                         <NavLink
                           className={classnames({
@@ -177,20 +212,44 @@ import {
                             </tr>
                             <tr>
                               <td>2</td>
-                              <td>Pranav Talmale</td>
+                              <td>
+                            <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal1(true)}
+                            >
+                             Add Member 2
+                            </Button>
+                            </td>
                             </tr>
                             <tr>
                               <td>3</td>
-                              <td>Shreyash Pingale</td>
+                              <td>
+                            <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal2(true)}
+                            >
+                             Add Member 3
+                            </Button>
+                                </td>
                             </tr>
                             <tr>
                               <td>4</td>
-                              <td>Aryan Butala</td>
+                              <td>
+                              <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal3(true)}
+                              >
+                                Add Member 4
+                              </Button>
+                              </td>
                             </tr>
                           </tbody>
                         </Table>
                       </TabPane>
-                      <TabPane tabId="tab2">
+                      {/*<TabPane tabId="tab2">
                         <Row>
                           <Label sm="3">Name</Label>
                           <Col sm="9">
@@ -220,13 +279,13 @@ import {
                         <FormText color="default" tag="span">
                           Team can only have 4 members including you.
                         </FormText>
-                        </TabPane>
+                        </TabPane>*/}
                       <TabPane tabId="tab3">
                       <Table className="tablesorter" responsive>
                           <thead className="text-primary">
                             <tr>
                               <th className="header">Sr. No</th>
-                              <th className="header">Name</th>
+                              <th className="header">Email</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -245,15 +304,39 @@ import {
                             </tr>
                             <tr>
                               <td>2</td>
-                              <td>abc@email.com</td>
+                              <td>
+                              <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal1(true)}
+                              >
+                                Add Member 2
+                              </Button>
+                              </td>
                             </tr>
                             <tr>
                               <td>3</td>
-                              <td>xyz@email.com</td>
+                              <td>
+                              <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal2(true)}
+                              >
+                                Add Member 3
+                              </Button>
+                              </td>
                             </tr>
                             <tr>
                               <td>4</td>
-                              <td>pqr@email.com</td>
+                              <td>
+                              <Button
+                              className="btn-simple btn-round"
+                              color="primary"
+                              onClick={() => setFormModal3(true)}
+                              >
+                                Add Member 4
+                              </Button>
+                              </td>
                             </tr>
                           </tbody>
                         </Table>
@@ -263,6 +346,318 @@ import {
                 </Card>
               </Col>
             </Row>
+          {/* Start Form Modal 1*/}
+          <Modal
+            modalClassName="modal-black"
+            isOpen={formModal1}
+            toggle={() => setFormModal1(false)}
+          >
+            <div className="modal-header justify-content-center">
+              <button className="close" onClick={() => setFormModal1(false)}>
+                <i className="tim-icons icon-simple-remove text-white" />
+              </button>
+              <div className="text-muted text-center ml-auto mr-auto">
+                <h3 className="mb-0">Add Member 2</h3>
+              </div>
+            </div>
+            <div className="modal-body">
+              <Form role="form">
+                <FormGroup className="mb-3">
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": name2Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-single-02" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Name"
+                      type="text"
+                      onFocus={(e) => setName2Focus(true)}
+                      onBlur={(e) => setName2Focus(false)}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": email2Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-email-85" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Email"
+                      type="email"
+                      onFocus={(e) => setEmail2Focus(true)}
+                      onBlur={(e) => setEmail2Focus(false)}
+                    />
+                  </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <InputGroup
+                      className={classnames("input-group-alternative", {
+                        "input-group-focus": number2Focus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-bell-55" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Number"
+                        type="text"
+                        onFocus={(e) => setNumber2Focus(true)}
+                        onBlur={(e) => setNumber2Focus(false)}
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                <div className="text-center">
+                  <Button className="my-4" color="primary" type="button">
+                    Add Member
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </Modal>
+          {/* End Form Modal 1*/}
+
+          {/* Start Form Modal 2*/}
+          <Modal
+            modalClassName="modal-black"
+            isOpen={formModal2}
+            toggle={() => setFormModal2(false)}
+          >
+            <div className="modal-header justify-content-center">
+              <button className="close" onClick={() => setFormModal2(false)}>
+                <i className="tim-icons icon-simple-remove text-white" />
+              </button>
+              <div className="text-muted text-center ml-auto mr-auto">
+                <h3 className="mb-0">Add Member 3</h3>
+              </div>
+            </div>
+            <div className="modal-body">
+              <Form role="form">
+                <FormGroup className="mb-3">
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": name3Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-single-02" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Name"
+                      type="text"
+                      onFocus={(e) => setName3Focus(true)}
+                      onBlur={(e) => setName3Focus(false)}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": email3Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-email-85" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Email"
+                      type="email"
+                      onFocus={(e) => setEmail3Focus(true)}
+                      onBlur={(e) => setEmail3Focus(false)}
+                    />
+                  </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <InputGroup
+                      className={classnames("input-group-alternative", {
+                        "input-group-focus": number3Focus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-bell-55" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Number"
+                        type="text"
+                        onFocus={(e) => setNumber3Focus(true)}
+                        onBlur={(e) => setNumber3Focus(false)}
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                <div className="text-center">
+                  <Button className="my-4" color="primary" type="button">
+                    Add Member
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </Modal>
+          {/* End Form Modal 2*/}
+
+          {/* Start Form Modal 3*/}
+          <Modal
+            modalClassName="modal-black"
+            isOpen={formModal3}
+            toggle={() => setFormModal3(false)}
+          >
+            <div className="modal-header justify-content-center">
+              <button className="close" onClick={() => setFormModal3(false)}>
+                <i className="tim-icons icon-simple-remove text-white" />
+              </button>
+              <div className="text-muted text-center ml-auto mr-auto">
+                <h3 className="mb-0">Add Member 4</h3>
+              </div>
+            </div>
+            <div className="modal-body">
+              <Form role="form">
+                <FormGroup className="mb-3">
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": name4Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-single-02" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Name"
+                      type="text"
+                      onFocus={(e) => setName4Focus(true)}
+                      onBlur={(e) => setName4Focus(false)}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": email4Focus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-email-85" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Email"
+                      type="email"
+                      onFocus={(e) => setEmail4Focus(true)}
+                      onBlur={(e) => setEmail4Focus(false)}
+                    />
+                  </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <InputGroup
+                      className={classnames("input-group-alternative", {
+                        "input-group-focus": number4Focus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-bell-55" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Number"
+                        type="text"
+                        onFocus={(e) => setNumber4Focus(true)}
+                        onBlur={(e) => setNumber4Focus(false)}
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                <div className="text-center">
+                  <Button className="my-4" color="primary" type="button">
+                    Add Member
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </Modal>
+          {/* End Form Modal 3*/}
+
+          {/* Start Form Modal 4*/}
+          <Modal
+            modalClassName="modal-black"
+            isOpen={formModal4}
+            toggle={() => setFormModal4(false)}
+          >
+            <div className="modal-header justify-content-center">
+              <button className="close" onClick={() => setFormModal4(false)}>
+                <i className="tim-icons icon-simple-remove text-white" />
+              </button>
+              <div className="text-muted text-center ml-auto mr-auto">
+                <h3 className="mb-0">Set Team Name</h3>
+              </div>
+            </div>
+            <div className="modal-body">
+              <Form role="form">
+                <FormGroup className="mb-3">
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": teamNameFocus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-bulb-63" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Team Name"
+                      type="text"
+                      onFocus={(e) => setTeamNameFocus(true)}
+                      onBlur={(e) => setTeamNameFocus(false)}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                  <InputGroup
+                    className={classnames("input-group-alternative", {
+                      "input-group-focus": shortNameFocus,
+                    })}
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="tim-icons icon-email-85" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      placeholder="Short Name for your Team"
+                      type="text"
+                      onFocus={(e) => setShortNameFocus(true)}
+                      onBlur={(e) => setShortNameFocus(false)}
+                    />
+                  </InputGroup>
+                  </FormGroup>
+                <div className="text-center">
+                  <Button className="my-4" color="primary" type="button">
+                    Set Name
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </Modal>
+          {/* End Form Modal 4*/}
           </Container>
         </div>
       </div>
