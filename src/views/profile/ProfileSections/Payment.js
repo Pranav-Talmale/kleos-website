@@ -31,36 +31,36 @@ export default function Payment() {
                       <Row>
                         <Col md="6">
                           <FormGroup>
-                            <label>Your Name</label>
-                            <Input defaultValue="Mike" type="text" />
+                            <label>First Name on Card</label>
+                            <Input placeholder="John" type="text" />
                           </FormGroup>
                         </Col>
                         <Col md="6">
                           <FormGroup>
-                            <label>Email address</label>
-                            <Input placeholder="mike@email.com" type="email" />
+                            <label>Surname Name on Card</label>
+                            <Input placeholder="Doe" type="text" />
                           </FormGroup>
                         </Col>
                       </Row>
                       <Row>
                         <Col md="6">
                           <FormGroup>
-                            <label>Phone</label>
-                            <Input defaultValue="001-12321345" type="text" />
+                            <label>CVV</label>
+                            <Input placeholder="123" type="text" />
                           </FormGroup>
                         </Col>
                         <Col md="6">
                           <FormGroup>
-                            <label>Company</label>
-                            <Input defaultValue="CreativeTim" type="text" />
+                            <label>Expiry Date</label>
+                            <Input type="date" />
                           </FormGroup>
                         </Col>
                       </Row>
                       <Row>
                         <Col md="12">
                           <FormGroup>
-                            <label>Message</label>
-                            <Input placeholder="Hello there!" type="text" />
+                            <label>Card</label>
+                            <Input placeholder="1234 5678 123" type="text" />
                           </FormGroup>
                         </Col>
                       </Row>
@@ -71,14 +71,14 @@ export default function Payment() {
                         id="tooltip341148792"
                         type="button"
                       >
-                        Send text
+                        Send Payment
                       </Button>
                       <UncontrolledTooltip
                         delay={0}
                         placement="right"
                         target="tooltip341148792"
                       >
-                        Can't wait for your message
+                        Can't wait for your money
                       </UncontrolledTooltip>
                     </Form>
                   </CardBody>
@@ -90,11 +90,10 @@ export default function Payment() {
                     <i className="tim-icons icon-square-pin" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Find us at the office</h4>
+                    <h4 className="info-title">Find us at our college</h4>
                     <p>
-                      Bld Mihail Kogalniceanu, nr. 8, <br />
-                      7652 Bucharest, <br />
-                      Romania
+                    Ramrao Adik Institute Of Technology, <br />
+                    Nerul, Navi Mumbai.
                     </p>
                   </div>
                 </div>
@@ -105,9 +104,9 @@ export default function Payment() {
                   <div className="description">
                     <h4 className="info-title">Give us a ring</h4>
                     <p>
-                      Michael Jordan <br />
-                      +40 762 321 762 <br />
-                      Mon - Fri, 8:00-22:00
+                      Pranav Talmale <br />
+                      +91 1234567890 <br />
+                      Mon - Sun, 10:00am-5:00pm
                     </p>
                   </div>
                 </div>
