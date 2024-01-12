@@ -21,6 +21,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           url: `${USERS_URL}`,
           method: 'POST',
           body: data,
+          credentials: "include",
         }),
       }),
       updateUser: builder.mutation({
@@ -28,6 +29,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           url: `${USERS_URL}/profile`,
           method: 'PUT',
           body: data,
+          credentials: "include",
         }),
       }),
   }),
