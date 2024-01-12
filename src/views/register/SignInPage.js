@@ -1,6 +1,9 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
+import { login, reset } from 'slices/authSlice.js';
 // reactstrap components
 import {
   Button,
@@ -27,11 +30,10 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import Footer from "components/Footer/Footer.js";
 
 export default function SignInPage() {
-  const [squares1to6, setSquares1to6] = React.useState("");
-  const [squares7and8, setSquares7and8] = React.useState("");
-  const [emailFocus, setEmailFocus] = React.useState(false);
-  const [passwordFocus, setPasswordFocus] = React.useState(false);
-  React.useEffect(() => {
+  //Effects Start
+  const [squares1to6, setSquares1to6] = useState("");
+  const [squares7and8, setSquares7and8] = useState("");
+  useEffect(() => {
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
     // Specify how to clean up after this effect:
@@ -58,6 +60,46 @@ export default function SignInPage() {
         "deg)"
     );
   };
+  //Effects End
+
+  //Logic Start
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [email, setEmail] = useState('');
+
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/profile')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    const userData = {
+      email,
+      password,
+    }
+
+    dispatch(login(userData))
+  }
+  //Logic End
+  
   return (
     <>
       <ExamplesNavbar />
@@ -103,6 +145,7 @@ export default function SignInPage() {
                             type="email" // Changed to type email for the email field
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </InputGroup>
                         <InputGroup
@@ -120,6 +163,7 @@ export default function SignInPage() {
                             type="password" // Changed to type password for the password field
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </InputGroup>
                         <FormGroup className="text-left">
@@ -131,7 +175,7 @@ export default function SignInPage() {
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button className="btn-round" color="primary" size="lg">
+                      <Button className="btn-round" color="primary" size="lg" onClick={onSubmit}>
                         Log In
                       </Button>
                     </CardFooter>
