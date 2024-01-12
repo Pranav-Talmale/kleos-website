@@ -33,16 +33,8 @@ import Footer from "components/Footer/Footer.js";
 export default function RegisterPage() {
   const [squares1to6, setSquares1to6] = useState("");
   const [squares7and8, setSquares7and8] = useState("");
-  const [fullNameFocus, setFullNameFocus] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [numberFocus, setNumberFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
-  const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
-  const [member1Name, setName] = useState('');
-  const [member1Email, setEmail] = useState('');
-  const [member1Number, setNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
+
   useEffect(() => {
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
@@ -71,6 +63,61 @@ export default function RegisterPage() {
     );
   };
 
+  const [fullNameFocus, setFullNameFocus] = useState(false);
+  const [member1Name, setName] = useState('');
+
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [member1Email, setEmail] = useState('');
+
+  const [numberFocus, setNumberFocus] = useState(false);
+  const [member1Number, setNumber] = useState('');
+
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  const [password, setPassword] = useState('');
+
+  const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [state, setSelectedState] = useState('');
+  const [stateFocus, setStateFocus] = useState(false);
+
+  const indianStates = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+    'Andaman and Nicobar Islands',
+    'Chandigarh',
+    'Dadra and Nagar Haveli and Daman and Diu',
+    'Lakshadweep',
+    'Delhi',
+    'Puducherry',
+  ];
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -91,7 +138,7 @@ export default function RegisterPage() {
       toast.error('Passwords do not match');
     } else {
       try {
-        const res = await register({ member1Name, member1Email, member1Number, password }).unwrap();
+        const res = await register({ member1Name, member1Email, member1Number, password, state }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate('/');
       } catch (err) {
@@ -183,6 +230,34 @@ export default function RegisterPage() {
                             onBlur={(e) => setNumberFocus(false)}
                             onChange={(e) => setNumber(e.target.value)}
                           />
+                        </InputGroup>
+                        <InputGroup
+                          className={classnames({
+                            'input-group-focus': stateFocus,
+                          })}
+                        >
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="tim-icons icon-world" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <select
+                            className="form-control"
+                            value={state}
+                            onChange={(e) => setSelectedState(e.target.value)}
+                            onFocus={(e) => setStateFocus(true)}
+                            onBlur={(e) => setStateFocus(false)}
+                            style={{ backgroundColor: '#1F2251', color: '#6C757C' }}
+                          >
+                            <option value="">
+                              Select a State
+                            </option>
+                            {indianStates.map((state) => (
+                              <option key={state} value={state}>
+                                {state}
+                              </option>
+                            ))}
+                          </select>
                         </InputGroup>
                         <InputGroup
                           className={classnames({
