@@ -1,6 +1,9 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { register, reset } from 'slices/authSlice.js';
+import { toast } from 'react-toastify'
 // reactstrap components
 import {
   Button,
@@ -27,12 +30,57 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import Footer from "components/Footer/Footer.js";
 
 export default function RegisterPage() {
-  const [squares1to6, setSquares1to6] = React.useState("");
-  const [squares7and8, setSquares7and8] = React.useState("");
-  const [fullNameFocus, setFullNameFocus] = React.useState(false);
-  const [emailFocus, setEmailFocus] = React.useState(false);
-  const [passwordFocus, setPasswordFocus] = React.useState(false);
-  React.useEffect(() => {
+  const [squares1to6, setSquares1to6] = useState("");
+  const [squares7and8, setSquares7and8] = useState("");
+
+  const [fullNameFocus, setFullNameFocus] = useState(false);
+  const [name, setName] = useState('');
+
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [email, setEmail] = useState('');
+
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  const [password, setPassword] = useState('');
+
+  const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/profile')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match')
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      }
+
+      dispatch(register(userData))
+    }
+  }
+
+  useEffect(() => {
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
     // Specify how to clean up after this effect:
@@ -104,6 +152,7 @@ export default function RegisterPage() {
                             type="text"
                             onFocus={(e) => setFullNameFocus(true)}
                             onBlur={(e) => setFullNameFocus(false)}
+                            onChange={(e) => setName(e.target.value)}
                           />
                         </InputGroup>
                         <InputGroup
@@ -121,6 +170,7 @@ export default function RegisterPage() {
                             type="text"
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </InputGroup>
                         <InputGroup
@@ -138,6 +188,25 @@ export default function RegisterPage() {
                             type="text"
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </InputGroup>
+                        <InputGroup
+                          className={classnames({
+                            "input-group-focus": confirmPasswordFocus,
+                          })}
+                        >
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="tim-icons icon-lock-circle" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Confirm Password"
+                            type="password"
+                            onFocus={(e) => setConfirmPasswordFocus(true)}
+                            onBlur={(e) => setConfirmPasswordFocus(false)}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                           />
                         </InputGroup>
                         {/*<FormGroup check className="text-left">
@@ -162,7 +231,7 @@ export default function RegisterPage() {
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button className="btn-round" color="primary" size="lg">
+                      <Button className="btn-round" color="primary" size="lg" onClick={onSubmit}>
                         Get Started
                       </Button>
                     </CardFooter>
