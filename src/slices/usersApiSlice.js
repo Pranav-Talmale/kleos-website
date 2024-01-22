@@ -11,27 +11,27 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     logout: builder.mutation({
-        query: () => ({
-          url: `${USERS_URL}/logout`,
-          method: 'POST',
-        }),
+      query: () => ({
+        url: `${USERS_URL}/logout`,
+        method: 'POST',
       }),
-      register: builder.mutation({
-        query: (data) => ({
-          url: `${USERS_URL}`,
-          method: 'POST',
-          body: data,
-          credentials: "include",
-        }),
+    }),
+    register: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}`,
+        method: 'POST',
+        body: data,
+        credentials: "include",
       }),
-      updateUser: builder.mutation({
-        query: (data) => ({
-          url: `${USERS_URL}/profile`,
-          method: 'PUT',
-          body: data,
-          credentials: "include",
-        }),
+    }),
+    updateUser: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/profile`,
+        method: 'PUT',
+        body: data,
+        credentials: "include",
       }),
+    }),
   }),
 });
 

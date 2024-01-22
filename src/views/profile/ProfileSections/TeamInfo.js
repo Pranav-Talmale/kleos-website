@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from 'react-redux';
 import { useUpdateUserMutation } from 'slices/usersApiSlice';
@@ -33,6 +33,24 @@ import {
     const dispatch = useDispatch();
     const { userInfo } = useSelector((state) => state.auth);
     const [updateProfile] = useUpdateUserMutation();
+
+    //Fetch Data From The Server
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const res = await updateProfile({
+            load: "",
+          }).unwrap();
+          //console.log(res);
+          dispatch(setCredentials(res));
+          toast.success('Signed In');
+        } catch (err) {
+          toast.error(err?.data?.message || err.error);
+        }
+      };
+    
+      fetchData();
+    }, [dispatch, updateProfile]);
 
     //Add Member 2 Form
     const [formModal1, setFormModal1] = useState(false);
