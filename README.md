@@ -13,70 +13,55 @@ Within the download you'll find the following directories and files:
 ```
 Kleos Website React
 .
-├── README.md
-├── package.json
-├── public
-│   ├── ACM.ico
-│   ├── ACM.PNG
-│   ├── index.html
-│   ├── manifest.json
-│   └── robots.txt
-└── src
-    ├── index.js
-    ├── variables
-    │   └── charts.js
-    ├── assets
-    │   ├── css
-    │   │   ├── blk-design-system-react.css
-    │   │   ├── blk-design-system-react.css.map
-    │   │   ├── blk-design-system-react.min.css
-    │   │   └── nucleo-icons.css
-    │   ├── demo
-    │   │   └── demo.css
-    │   ├── fonts
-    │   │   ├── nucleo.eot
-    │   │   ├── nucleo.ttf
-    │   │   ├── nucleo.woff
-    │   │   └── nucleo.woff2
-    │   ├── img
-    │   └── scss
-    │       ├── blk-design-system-react
-    │       │   ├── bootstrap
-    │       │   │   ├── mixins
-    │       │   │   └── utilities
-    │       │   ├── custom
-    │       │   │   ├── cards
-    │       │   │   ├── mixins
-    │       │   │   ├── sections
-    │       │   │   ├── utilities
-    │       │   │   └── vendor
-    │       │   └── react
-    │       │       └── react-differences.scss
-    │       └── blk-design-system-react.scss
-    ├── components
-    │   ├── Footer
-    │   │   └── Footer.js
-    │   ├── Navbars
-    │   │   ├── ComponentsNavbar.js
-    │   │   └── ExamplesNavbar.js
-    │   └── PageHeader
-    │       └── PageHeader.js
-    └── views
-        ├── Index.js
-        ├── IndexSections
-        │   ├── Basics.js
-        │   ├── Download.js
-        │   ├── Examples.js
-        │   ├── JavaScript.js
-        │   ├── Navbars.js
-        │   ├── Notifications.js
-        │   ├── NucleoIcons.js
-        │   ├── Pagination.js
-        │   ├── Signup.js
-        │   ├── Tabs.js
-        │   └── Typography.js
-        └── examples
-            ├── LandingPage.js
-            ├── ProfilePage.js
-            └── RegisterPage.js
+│   .env
+│   .gitignore
+│   .npmrc
+│   .prettierignore
+│   jsconfig.json
+│   package.json
+│   README.md
+├───public
+│       ACM.ico
+│       ACM.png
+│       index.html
+│       manifest.json
+│       robots.txt
+│       _redirects
+└───src
+    │   index.js
+    │   store.js
+    ├───assets
+    ├───components
+    │   ├───Footer
+    │   │       Footer.js
+    │   ├───Navbars
+    │   │       ExamplesNavbar.js
+    │   │       IndexNavbar.js
+    │   └───PageHeader
+    │           PageHeader.js
+    ├───slices
+    │       apiSlice.js
+    │       authSlice.js
+    │       paymentApiSlice.js
+    │       usersApiSlice.js
+    └───views
+        ├───home
+        │   │   Home.js
+        │   │
+        │   └───HomeSections
+        │           About.js
+        │           Domains.js
+        │           FAQs.js
+        │           Register.js
+        │           Timeline.js
+        ├───profile
+        │   │   ProfilePage.js
+        │   │
+        │   └───ProfileSections
+        │           HackTemplate.js
+        │           Payment.js
+        │           TeamInfo.js
+        └───register
+                RegisterPage.js
+                SignInPage.js
 ```
