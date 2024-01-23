@@ -35,11 +35,7 @@ export default function ProfilePage() {
   return (
     <>
       <div className="wrapper">
-        <img
-            alt="..."
-            className="dots"
-            src={require("assets/img/dots.png")}
-        />
+        <img alt="..." className="dots" src={require("assets/img/dots.png")} />
         <ExamplesNavbar />
         <TeamInfo />
         <HackTemplate />

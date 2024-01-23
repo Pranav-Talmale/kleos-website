@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 // reactstrap components
 import {
   Button,
@@ -90,7 +90,7 @@ export default function IndexNavbar() {
             <Row>
               <Col className="collapse-brand" xs="6">
                 <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                KLEOS
+                  KLEOS
                 </a>
               </Col>
               <Col className="collapse-close text-right" xs="6">
@@ -137,18 +137,20 @@ export default function IndexNavbar() {
                 {userInfo ? (
                   <>
                     <i className="tim-icons icon-badge" /> Go To Profile
-                  </>):(
+                  </>
+                ) : (
                   <>
                     <i className="tim-icons icon-spaceship" /> Register
-                  </>)
-                }
+                  </>
+                )}
               </Button>
             </NavItem>
             <NavItem>
               <Button
                 className="nav-link d-none d-lg-block"
                 color="default"
-                tag={Link} to="https://rait.acm.org/"
+                tag={Link}
+                to="https://rait.acm.org/"
                 target="_blank"
               >
                 RAIT ACM

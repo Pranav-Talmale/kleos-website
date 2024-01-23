@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from "react";
 import classnames from "classnames";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { useLoginMutation } from 'slices/usersApiSlice';
-import { setCredentials } from 'slices/authSlice';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "slices/usersApiSlice";
+import { setCredentials } from "slices/authSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // reactstrap components
 import {
   Button,
@@ -37,9 +37,9 @@ export default function SignInPage() {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
-  const [member1Email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+  const [member1Email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ export default function SignInPage() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/profile-page');
+      navigate("/profile-page");
     }
   }, [navigate, userInfo]);
 
@@ -58,7 +58,7 @@ export default function SignInPage() {
     try {
       const res = await login({ member1Email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigate('/');
+      navigate("/");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -81,14 +81,14 @@ export default function SignInPage() {
         posX * 0.05 +
         "deg) rotateX(" +
         posY * -0.05 +
-        "deg)"
+        "deg)",
     );
     setSquares7and8(
       "perspective(500px) rotateY(" +
         posX * 0.02 +
         "deg) rotateX(" +
         posY * -0.02 +
-        "deg)"
+        "deg)",
     );
   };
   return (
@@ -159,19 +159,22 @@ export default function SignInPage() {
                         </InputGroup>
                         <FormGroup className="text-left">
                           <Label>
-                          <span className="form-check-sign" />Don't have an account?{' '}
-                          <Link to="/register">Register.</Link>.
+                            <span className="form-check-sign" />
+                            Don't have an account?{" "}
+                            <Link to="/register">Register.</Link>.
                           </Label>
                         </FormGroup>
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button className="btn-round" 
-                              color="primary" 
-                              size="lg"
-                              disabled={isLoading}
-                              type='submit'
-                              onClick={submitHandler}>
+                      <Button
+                        className="btn-round"
+                        color="primary"
+                        size="lg"
+                        disabled={isLoading}
+                        type="submit"
+                        onClick={submitHandler}
+                      >
                         Log In
                       </Button>
                     </CardFooter>

@@ -16,9 +16,7 @@ export default function PageHeader() {
       <Container>
         <div className="content-center brand">
           <h1 className="h1-seo">KLEOS</h1>
-          <h3 className="d-sm-block">
-            RAIT ACM's flagship hackathon
-          </h3>
+          <h3 className="d-sm-block">RAIT ACM's flagship hackathon</h3>
         </div>
       </Container>
     </div>

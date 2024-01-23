@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useLogoutMutation } from 'slices/usersApiSlice.js';
-import { logout } from 'slices/authSlice.js';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useLogoutMutation } from "slices/usersApiSlice.js";
+import { logout } from "slices/authSlice.js";
 // reactstrap components
 import {
   Collapse,
@@ -63,7 +63,7 @@ export default function ExamplesNavbar() {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate('/home', { replace: true });
+      navigate("/home", { replace: true });
     } catch (err) {
       console.error(err);
     }
@@ -121,14 +121,14 @@ export default function ExamplesNavbar() {
               </NavLink>
             </NavItem>
             {userInfo ? (
-                <>
-            <NavItem>
-              <NavLink tag={Link} onClick={logoutHandler}>
-              Logout
-              </NavLink>
-            </NavItem>
-                </>
-                ): null}  
+              <>
+                <NavItem>
+                  <NavLink tag={Link} onClick={logoutHandler}>
+                    Logout
+                  </NavLink>
+                </NavItem>
+              </>
+            ) : null}
             <NavItem>
               <NavLink tag={Link} to="/home#FAQs">
                 FAQs

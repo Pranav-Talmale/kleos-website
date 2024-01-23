@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import classnames from "classnames";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { useRegisterMutation } from 'slices/usersApiSlice.js';
-import { setCredentials } from 'slices/authSlice.js';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterMutation } from "slices/usersApiSlice.js";
+import { setCredentials } from "slices/authSlice.js";
+import { toast } from "react-toastify";
 // reactstrap components
 import {
   Button,
@@ -34,7 +34,6 @@ export default function RegisterPage() {
   const [squares1to6, setSquares1to6] = useState("");
   const [squares7and8, setSquares7and8] = useState("");
 
-
   useEffect(() => {
     document.body.classList.toggle("register-page");
     document.documentElement.addEventListener("mousemove", followCursor);
@@ -52,70 +51,70 @@ export default function RegisterPage() {
         posX * 0.05 +
         "deg) rotateX(" +
         posY * -0.05 +
-        "deg)"
+        "deg)",
     );
     setSquares7and8(
       "perspective(500px) rotateY(" +
         posX * 0.02 +
         "deg) rotateX(" +
         posY * -0.02 +
-        "deg)"
+        "deg)",
     );
   };
 
   const [fullNameFocus, setFullNameFocus] = useState(false);
-  const [member1Name, setName] = useState('');
+  const [member1Name, setName] = useState("");
 
   const [emailFocus, setEmailFocus] = useState(false);
-  const [member1Email, setEmail] = useState('');
+  const [member1Email, setEmail] = useState("");
 
   const [numberFocus, setNumberFocus] = useState(false);
-  const [member1Number, setNumber] = useState('');
+  const [member1Number, setNumber] = useState("");
 
   const [passwordFocus, setPasswordFocus] = useState(false);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [state, setSelectedState] = useState('');
+  const [state, setSelectedState] = useState("");
   const [stateFocus, setStateFocus] = useState(false);
 
   const indianStates = [
-    'Andhra Pradesh',
-    'Arunachal Pradesh',
-    'Assam',
-    'Bihar',
-    'Chhattisgarh',
-    'Goa',
-    'Gujarat',
-    'Haryana',
-    'Himachal Pradesh',
-    'Jharkhand',
-    'Karnataka',
-    'Kerala',
-    'Madhya Pradesh',
-    'Maharashtra',
-    'Manipur',
-    'Meghalaya',
-    'Mizoram',
-    'Nagaland',
-    'Odisha',
-    'Punjab',
-    'Rajasthan',
-    'Sikkim',
-    'Tamil Nadu',
-    'Telangana',
-    'Tripura',
-    'Uttar Pradesh',
-    'Uttarakhand',
-    'West Bengal',
-    'Andaman and Nicobar Islands',
-    'Chandigarh',
-    'Dadra and Nagar Haveli and Daman and Diu',
-    'Lakshadweep',
-    'Delhi',
-    'Puducherry',
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Lakshadweep",
+    "Delhi",
+    "Puducherry",
   ];
 
   const dispatch = useDispatch();
@@ -127,7 +126,7 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/profile-page');
+      navigate("/profile-page");
     }
   }, [navigate, userInfo]);
 
@@ -135,12 +134,18 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
+      toast.error("Passwords do not match");
     } else {
       try {
-        const res = await register({ member1Name, member1Email, member1Number, password, state }).unwrap();
+        const res = await register({
+          member1Name,
+          member1Email,
+          member1Number,
+          password,
+          state,
+        }).unwrap();
         dispatch(setCredentials({ ...res }));
-        navigate('/');
+        navigate("/");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
@@ -233,7 +238,7 @@ export default function RegisterPage() {
                         </InputGroup>
                         <InputGroup
                           className={classnames({
-                            'input-group-focus': stateFocus,
+                            "input-group-focus": stateFocus,
                           })}
                         >
                           <InputGroupAddon addonType="prepend">
@@ -247,11 +252,12 @@ export default function RegisterPage() {
                             onChange={(e) => setSelectedState(e.target.value)}
                             onFocus={(e) => setStateFocus(true)}
                             onBlur={(e) => setStateFocus(false)}
-                            style={{ backgroundColor: '#1F2251', color: '#6C757C' }}
+                            style={{
+                              backgroundColor: "#1F2251",
+                              color: "#6C757C",
+                            }}
                           >
-                            <option value="">
-                              Select a State
-                            </option>
+                            <option value="">Select a State</option>
                             {indianStates.map((state) => (
                               <option key={state} value={state}>
                                 {state}
@@ -310,18 +316,20 @@ export default function RegisterPage() {
                         </FormGroup>*/}
                         <FormGroup className="text-left">
                           <Label>
-                          <span className="form-check-sign" />Already have an account?{' '}
-                          <Link to="/signin">Sign In.</Link>.
+                            <span className="form-check-sign" />
+                            Already have an account?{" "}
+                            <Link to="/signin">Sign In.</Link>.
                           </Label>
                         </FormGroup>
                       </Form>
                     </CardBody>
                     <CardFooter>
-                      <Button 
-                        className="btn-round" 
-                        color="primary" 
+                      <Button
+                        className="btn-round"
+                        color="primary"
                         size="lg"
-                        onClick={submitHandler}>
+                        onClick={submitHandler}
+                      >
                         Get Started
                       </Button>
                     </CardFooter>

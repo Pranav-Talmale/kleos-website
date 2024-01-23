@@ -95,7 +95,7 @@ export default function Footer() {
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip318450378">
                 Follow us
-              </UncontrolledTooltip> 
+              </UncontrolledTooltip>
             </div>
           </Col>
         </Row>
