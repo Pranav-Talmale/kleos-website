@@ -1,4 +1,5 @@
 import React from "react";
+import Spline from "@splinetool/react-spline";
 
 // reactstrap components
 import { Container } from "reactstrap";
@@ -14,10 +15,10 @@ export default function PageHeader() {
       <div className="squares square6" />
       <div className="squares square7" />
       <Container>
-        <div className="content-center brand">
-          <h1 className="h1-seo">KLEOS</h1>
-          <h3 className="d-sm-block">RAIT ACM's flagship hackathon</h3>
-        </div>
+        <Spline
+          className="spline"
+          scene="https://prod.spline.design/tettRnoA98V1CwD5/scene.splinecode"
+        />
       </Container>
     </div>
   );
