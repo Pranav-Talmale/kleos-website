@@ -1,4 +1,5 @@
 import React from "react";
+import Spline from "@splinetool/react-spline";
 // reactstrap components
 import { Container, Row, Col } from "reactstrap";
 
@@ -8,10 +9,9 @@ export default function About() {
       <Container>
         <Row className="row-grid justify-content-between">
           <Col md="5">
-            <img
-              alt="..."
-              className="floating"
-              src={require("assets/img/kleos-logo-full.png")}
+            <Spline
+              className="spline"
+              scene="https://prod.spline.design/g8gnjBd-M8x1slvX/scene.splinecode"
             />
           </Col>
           <Col md="6">

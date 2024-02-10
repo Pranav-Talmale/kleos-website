@@ -14,7 +14,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^1.0.50",
+    "@splinetool/runtime": "^1.0.51",
     "bootstrap": "4.6.2",
     "perfect-scrollbar": "1.5.5",
     "react": ">=16.8.0",
